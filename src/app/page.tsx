@@ -1,5 +1,8 @@
 "use client";
 
+import { StatusBar } from "@/components/StatusBar";
+import { Footer } from "@/components/Footer";
+
 import { useState, useEffect } from "react";
 import { 
   Activity, 
@@ -39,6 +42,8 @@ export default function Home() {
   };
 
   return (
+    <>
+      <StatusBar />
     <div className="flex flex-col flex-1 h-screen overflow-hidden">
       {/* Header */}
       <header className="flex h-16 items-center justify-between border-b border-border bg-surface/50 px-6 backdrop-blur-md">
@@ -175,5 +180,7 @@ export default function Home() {
 
       </main>
     </div>
+      <Footer />
+    </>
   );
 }
