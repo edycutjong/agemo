@@ -9,10 +9,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "ci": "npm run lint && npm run typecheck && npm run test:coverage"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
+    "framer-motion": "^12.38.0",
     "lucide-react": "^1.14.0",
     "next": "16.2.5",
     "react": "19.2.4",
@@ -20,6 +22,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
