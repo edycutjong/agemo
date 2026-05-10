@@ -1,159 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Agemo Pitch Deck</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Agemo — AI Growth Loop on Torque MCP | Pitch Deck</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cyan:#06b6d4;--purple:#a855f7;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--slate-400:#94a3b8;--slate-600:#475569}
+    body{background:#020617}
+    #particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+    .reveal{font-family:'Inter',system-ui,sans-serif;position:relative;z-index:1}
+    .reveal .slide-background{background:transparent!important}
+    .reveal .slides section{background:transparent}
+    .reveal h1,.reveal h2,.reveal h3{text-transform:none;font-family:'Inter',system-ui,sans-serif;font-weight:800;letter-spacing:-0.03em}
+    .brand-gradient{background:linear-gradient(135deg,var(--cyan),var(--green),var(--cyan));background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gs 4s ease infinite}
+    @keyframes gs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .glow-title{text-shadow:0 0 40px rgba(6,182,212,0.3),0 0 80px rgba(6,182,212,0.1)}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-size:.55em;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(6,182,212,0.3);background:rgba(6,182,212,0.08);color:var(--cyan)}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px var(--cyan)}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+    .glass-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+    .glass-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)}
+    .glass-card:hover{border-color:rgba(6,182,212,0.25);transform:translateY(-2px);box-shadow:0 8px 32px rgba(6,182,212,0.1)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:stretch}
+    .metric-value{font-family:'JetBrains Mono',monospace;font-size:3em;font-weight:700;margin:0;line-height:1}
+    .metric-label{font-size:.48em;color:var(--slate-400);text-transform:uppercase;letter-spacing:3px;margin-top:12px;font-weight:600}
+    .icon-ring{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6em;margin-bottom:16px}
+    .icon-ring.cyan{background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2)}
+    .icon-ring.green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)}
+    .icon-ring.amber{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
+    .reveal .problem-list{list-style:none;width:90%;text-align:left}
+    .reveal .problem-list li{padding:16px 20px;margin-bottom:12px;border-radius:12px;background:rgba(239,68,68,0.05);border-left:3px solid var(--red);color:#e2e8f0;font-size:.85em;line-height:1.5}
+    .flow-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+    .flow-node{padding:10px 20px;border-radius:10px;font-size:.6em;font-family:'JetBrains Mono',monospace;font-weight:600}
+    .flow-arrow{color:var(--slate-600);font-size:1.2em}
+    .terminal-block{background:#0a0a0a;border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.5em}
+    .terminal-header{display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .terminal-dot{width:10px;height:10px;border-radius:50%}
+    .terminal-body{padding:16px;line-height:1.8}
+    .t-cyan{color:var(--cyan)}.t-green{color:var(--green)}.t-red{color:var(--red)}.t-amber{color:var(--amber)}.t-dim{color:var(--slate-600)}
+    .link-card{display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:all .3s ease;margin-bottom:10px}
+    .link-card:hover{background:rgba(6,182,212,0.08);border-color:rgba(6,182,212,0.3);transform:translateX(4px)}
+    .link-card .link-label{font-size:.6em;color:var(--cyan);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+    .link-card .link-url{font-size:.7em;color:#fff;font-family:'JetBrains Mono',monospace}
+    .link-card .link-icon{font-size:1.4em}
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div class="reveal">
+    <div class="slides">
 
-    <style>
-      .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-        text-transform: none;
-        font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-      }
-      .reveal .brand-text {
-        background: linear-gradient(90deg, #a855f7, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 800;
-      }
-      .reveal .subtext {
-        color: #94a3b8;
-        font-size: 0.6em;
-        margin-top: -10px;
-      }
-      .reveal .slide-background {
-        background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #000000 100%);
-      }
-      .reveal ul {
-        display: block;
-        width: 80%;
-        margin: 0 auto;
-        text-align: left;
-      }
-      .reveal li {
-        margin-bottom: 20px;
-        color: #e2e8f0;
-      }
-      .reveal .highlight {
-        color: #22d3ee;
-        font-weight: 600;
-      }
-      .grid-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
-      }
-      .metric-box {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 30px;
-        text-align: center;
-      }
-      .metric-value {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: #06b6d4;
-        margin: 0;
-      }
-      .metric-label {
-        font-size: 0.5em;
-        color: #94a3b8;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        
-        <!-- Slide 1: Title -->
-        <section>
-          <h1 class="brand-text">Agemo</h1>
-          <p>Autonomous AI growth agent via Torque MCP. Analyze → Optimize → Execute loop.</p>
-          <div style="margin-top: 50px;">
-            <small style="color: #64748b; letter-spacing: 2px; text-transform: uppercase;">Colosseum Frontier Hackathon 2026</small>
+      <section>
+        <div class="badge"><span class="dot"></span> Torque MCP Integration</div>
+        <h1 style="font-size:3.5em;margin-top:24px" class="glow-title"><span class="brand-gradient">Agemo</span></h1>
+        <p style="color:#cbd5e1;font-size:.95em;max-width:620px;margin:16px auto 0;line-height:1.6">
+          <strong style="color:#fff">Autonomous AI growth loop</strong> that analyzes, optimizes, and executes campaign adjustments in real-time.
+        </p>
+        <p style="color:var(--slate-400);font-size:.65em;margin-top:40px;letter-spacing:2px;text-transform:uppercase">Colosseum Frontier Hackathon 2026</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:2em">The <span style="color:var(--red)">Problem</span></h2>
+        <p style="color:var(--slate-400);font-size:.75em;margin-bottom:28px">Growth campaigns on Solana are flying blind.</p>
+        <ul class="problem-list">
+          <li>🔥 <strong>$8K burned, zero insight</strong> — Projects spend on referral rewards with no feedback loop</li>
+          <li>🐌 <strong>Manual management</strong> — Campaign adjustments take days; the market moves in minutes</li>
+          <li>📉 <strong>No retention data</strong> — Campaigns optimize for clicks, not conversions</li>
+        </ul>
+        <p style="color:var(--red);font-size:.6em;margin-top:24px;font-weight:600">A Solana project burned $8K on referrals but couldn't tell which campaign drove retention.</p>
+      </section>
+
+      <section>
+        <h2 style="font-size:2em">The <span class="brand-gradient">Solution</span></h2>
+        <p style="color:#cbd5e1;font-size:.75em;margin-bottom:24px">A closed-loop AI agent that learns, adapts, and executes — via Torque MCP.</p>
+        <div class="grid-3" style="margin-top:20px">
+          <div class="glass-card" style="text-align:left"><div class="icon-ring cyan">📊</div><h3 style="font-size:.9em;color:#fff;margin:0 0 8px">Analyze</h3><p style="font-size:.55em;color:var(--slate-400);line-height:1.6">Track user journeys across campaigns. Identify which rewards drive retention vs. churn.</p></div>
+          <div class="glass-card" style="text-align:left"><div class="icon-ring amber">🧠</div><h3 style="font-size:.9em;color:#fff;margin:0 0 8px">Optimize</h3><p style="font-size:.55em;color:var(--slate-400);line-height:1.6">AI suggests reward changes: "Cut reward 40%, add referral bonus" — with reasoning trail.</p></div>
+          <div class="glass-card" style="text-align:left"><div class="icon-ring green">⚡</div><h3 style="font-size:.9em;color:#fff;margin:0 0 8px">Execute</h3><p style="font-size:.55em;color:var(--slate-400);line-height:1.6">Autonomous campaign adjustments via Torque MCP. No human bottleneck.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size:1.8em">The AI Loop</h2>
+        <div class="flow-row" style="margin:30px 0 20px">
+          <div class="flow-node" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--cyan)">Campaign</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--amber)">User Data</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">AI Analysis</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-node" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:var(--green)">Auto-Adjust</div>
+        </div>
+        <div class="terminal-block" style="max-width:680px;margin:0 auto">
+          <div class="terminal-header">
+            <div class="terminal-dot" style="background:#ef4444"></div>
+            <div class="terminal-dot" style="background:#f59e0b"></div>
+            <div class="terminal-dot" style="background:#22c55e"></div>
+            <span style="color:var(--slate-400);margin-left:8px">AI Decision Log</span>
           </div>
-        </section>
-
-        <!-- Slide 2: The Problem -->
-        <section>
-          <h2>The <span style="color: #ef4444;">Problem</span></h2>
-          <p style="font-size: 1.2em; line-height: 1.4; color: #cbd5e1;">Current solutions lack speed, security, and integration.</p>
-          <ul>
-            <li>Fragmentation across chains and services</li>
-            <li>Poor user experience for web3 adoption</li>
-            <li>Lack of actionable insights</li>
-          </ul>
-        </section>
-
-        <!-- Slide 3: The Solution -->
-        <section>
-          <h2>The <span class="brand-text">Solution</span></h2>
-          <p><strong>Agemo</strong> bridges the gap.</p>
-          <div class="grid-2" style="margin-top: 40px;">
-            <div class="metric-box">
-              <div style="font-size: 3em;">⚡</div>
-              <h3 style="margin-top: 20px; font-size: 1.2em;">Fast Execution</h3>
-              <p style="font-size: 0.6em; color: #94a3b8;">High performance integrations</p>
-            </div>
-            <div class="metric-box">
-              <div style="font-size: 3em;">🔒</div>
-              <h3 style="margin-top: 20px; font-size: 1.2em;">Secure by Design</h3>
-              <p style="font-size: 0.6em; color: #94a3b8;">Verifiable actions and robustness</p>
-            </div>
+          <div class="terminal-body">
+            <div><span class="t-dim">[cycle:7]</span> <span class="t-cyan">›</span> Analyzing 100 user journeys across 3 campaigns</div>
+            <div><span class="t-dim">[cycle:7]</span> <span class="t-amber">⚙</span> Insight: Campaign B has 2x retention but 60% higher cost</div>
+            <div><span class="t-dim">[cycle:7]</span> <span class="t-green">✓</span> Action: Cut Campaign A reward 40%, add referral bonus to B</div>
+            <div><span class="t-dim">[cycle:8]</span> <span class="t-green">✓</span> Result: Conversion +34%, spend -22%. Loop continues.</div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Slide 4: Engineering Quality -->
-        <section>
-          <h2>Production Ready</h2>
-          <div class="grid-2" style="margin-top: 40px;">
-            <div class="metric-box">
-              <p class="metric-value">100%</p>
-              <p class="metric-label">Test Coverage</p>
-            </div>
-            <div class="metric-box">
-              <p class="metric-value">Zero</p>
-              <p class="metric-label">Lint Warnings</p>
-            </div>
-          </div>
-          <p style="font-size: 0.6em; color: #94a3b8; margin-top: 40px;">
-            Built with Next.js 16 App Router, React 19, Tailwind CSS v4, and Vitest. Fully automated CI pipeline.
-          </p>
-        </section>
+      <section>
+        <h2 style="font-size:1.8em">Production Ready</h2>
+        <div class="grid-3" style="margin-top:24px">
+          <div class="glass-card" style="text-align:center"><p class="metric-value" style="color:var(--cyan)" data-count="100">0%</p><p class="metric-label">Test Coverage</p></div>
+          <div class="glass-card" style="text-align:center"><p class="metric-value" style="color:var(--green)">Zero</p><p class="metric-label">Lint Warnings</p></div>
+          <div class="glass-card" style="text-align:center"><p class="metric-value" style="color:var(--amber)">5</p><p class="metric-label">MCP Features</p></div>
+        </div>
+        <div class="flow-row" style="margin-top:28px;gap:20px;flex-wrap:wrap">
+          <span class="badge" style="font-size:.45em">Next.js 16</span>
+          <span class="badge" style="font-size:.45em">React 19</span>
+          <span class="badge" style="font-size:.45em">Torque MCP</span>
+          <span class="badge" style="font-size:.45em">OpenAI</span>
+          <span class="badge" style="font-size:.45em">Tailwind v4</span>
+          <span class="badge" style="font-size:.45em">Vitest</span>
+        </div>
+      </section>
 
-        <!-- Slide 5: Demo / Links -->
-        <section>
-          <h2>Experience <span class="brand-text">Agemo</span></h2>
-          <div style="margin-top: 40px; text-align: left; width: 60%; margin: 40px auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <p style="margin: 10px 0;"><strong style="color: #22d3ee;">Live Demo:</strong> <a href="https://agemo.vercel.app" target="_blank" style="color: #fff;">agemo.vercel.app</a></p>
-            <p style="margin: 10px 0;"><strong style="color: #22d3ee;">GitHub:</strong> <a href="https://github.com/edycutjong/frontier-torque-mcp" target="_blank" style="color: #fff;">edycutjong/frontier-torque-mcp</a></p>
-          </div>
-          <p style="font-size: 0.7em; color: #94a3b8; margin-top: 40px;">Thank you for your time.</p>
-        </section>
+      <section>
+        <h2 style="font-size:2em">Experience <span class="brand-gradient">Agemo</span></h2>
+        <div style="max-width:420px;margin:32px auto 0">
+          <a href="https://agemo.edycu.dev" target="_blank" class="link-card"><span class="link-icon">🚀</span><div><div class="link-label">Live Demo</div><div class="link-url">agemo.edycu.dev</div></div></a>
+          <a href="https://github.com/edycutjong/frontier-torque-mcp" target="_blank" class="link-card"><span class="link-icon">📦</span><div><div class="link-label">Source Code</div><div class="link-url">edycutjong/frontier-torque-mcp</div></div></a>
+        </div>
+        <p style="font-size:.55em;color:var(--slate-600);margin-top:36px;font-style:italic">AI that grows your project while you sleep.</p>
+      </section>
 
-      </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.js"></script>
-    <script>
-      Reveal.initialize({
-        hash: true,
-        transition: 'slide',
-        backgroundTransition: 'fade',
-        plugins: [ RevealHighlight ]
-      });
-    </script>
-  </body>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+  <script>
+    (function(){const c=document.getElementById('particle-canvas'),x=c.getContext('2d');let p=[];const N=80;function r(){c.width=innerWidth;c.height=innerHeight}addEventListener('resize',r);r();class P{constructor(){this.r()}r(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.s=Math.random()*1.5+.5;this.o=Math.random()*.5+.1}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>c.width)this.vx*=-1;if(this.y<0||this.y>c.height)this.vy*=-1}d(){x.beginPath();x.arc(this.x,this.y,this.s,0,Math.PI*2);x.fillStyle=`rgba(6,182,212,${this.o})`;x.fill()}}for(let i=0;i<N;i++)p.push(new P);function a(){x.clearRect(0,0,c.width,c.height);p.forEach(q=>{q.u();q.d()});for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const dx=p[i].x-p[j].x,dy=p[i].y-p[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){x.beginPath();x.moveTo(p[i].x,p[i].y);x.lineTo(p[j].x,p[j].y);x.strokeStyle=`rgba(6,182,212,${.06*(1-d/150)})`;x.lineWidth=.5;x.stroke()}}requestAnimationFrame(a)}a()})();
+    Reveal.on('slidechanged',e=>{e.currentSlide.querySelectorAll('[data-count]').forEach(el=>{const t=parseInt(el.dataset.count);let c=0;const s=Math.ceil(t/40),i=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(i)}el.textContent=c+'%'},30)})});
+    Reveal.initialize({hash:true,transition:'fade',transitionSpeed:'slow',backgroundTransition:'fade',controls:true,progress:true,center:true,width:1200,height:700});
+  </script>
+</body>
 </html>
