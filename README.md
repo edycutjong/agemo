@@ -16,7 +16,7 @@
   ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
   ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
   ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-  [![Agemo CI](https://github.com/edycutjong/frontier-torque-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/frontier-torque-mcp/actions/workflows/ci.yml)
+  [![Agemo CI](https://github.com/edycutjong/agemo/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/agemo/actions/workflows/ci.yml)
 </div>
 
 ---
@@ -51,14 +51,14 @@ Autonomous AI growth agent via Torque MCP. Analyze → Optimize → Execute loop
 | **Language** | TypeScript | Strict type safety across the stack |
 | **Testing** | Vitest | Comprehensive unit and component testing |
 
-For a detailed breakdown of our system architecture and data flow, please refer to the [Architecture Document](docs/ARCHITECTURE.md) and [Product Requirements Document](docs/PRD.md).
+For a detailed breakdown of our system architecture and data flow, please refer to the [Architecture Document](docs/ARCHITECTURE.md).
 
 ## 🏆 Sponsor Tracks Targeted
 * **Sponsor Integration**: (Check `docs/SPONSOR_DEFENSE.md` for our full sponsor integration strategy)
 
 ## 🚀 Run it Locally (For Judges)
 
-1. **Clone the repo:** `git clone https://github.com/edycutjong/frontier-torque-mcp.git`
+1. **Clone the repo:** `git clone https://github.com/edycutjong/agemo.git`
 2. **Install dependencies:** `npm install`
 3. **Set up environment variables:**
    ```bash
