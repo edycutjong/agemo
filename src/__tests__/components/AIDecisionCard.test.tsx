@@ -68,4 +68,18 @@ describe('AIDecisionCard', () => {
     fireEvent.click(button);
     expect(screen.queryByText(/Agent Reasoning/i)).not.toBeInTheDocument();
   });
+
+  it('handles unknown actions, low confidence, and very recent timestamps', () => {
+    const edgeDecision = {
+      ...appliedDecision,
+      action: "UNKNOWN_ACTION",
+      confidence: 0.5,
+      timestamp: new Date().toISOString(), // "just now"
+    };
+    render(<AIDecisionCard decision={edgeDecision} index={0} />);
+    // "just now" from getRelativeTime
+    expect(screen.getByText('just now')).toBeInTheDocument();
+    // 50% confidence (from 0.5)
+    expect(screen.getByText('50%')).toBeInTheDocument();
+  });
 });

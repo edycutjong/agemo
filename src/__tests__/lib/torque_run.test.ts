@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { runTorqueOptimization, SEED_CAMPAIGNS } from '@/lib/torque';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
 
 // Mock MCP SDK
@@ -59,6 +58,23 @@ describe('runTorqueOptimization', () => {
     const alpha = result.updatedCampaigns.find(c => c.name === "Retargeting Alpha");
     expect(alpha?.status).toBe("Paused");
     expect(alpha?.budget).toBe("$0");
+  });
+
+  it('handles unknown campaigns and returns them unchanged', async () => {
+    const unknownCampaign = { id: 99, name: "Unknown Campaign", status: "Active", budget: "$100", cac: "$1", roi: "0%" };
+    const promise = runTorqueOptimization([unknownCampaign]);
+    await vi.runAllTimersAsync();
+    const result = await promise;
+    expect(result.updatedCampaigns[0]).toEqual(unknownCampaign);
+  });
+
+  it('uses default SSE URL when NEXT_PUBLIC_TORQUE_MCP_URL is not set', async () => {
+    vi.unstubAllEnvs(); // Remove the stubbed NEXT_PUBLIC_TORQUE_MCP_URL
+    const promise = runTorqueOptimization(SEED_CAMPAIGNS);
+    await vi.runAllTimersAsync();
+    await promise;
+    // SSEClientTransport should have been called with the default URL
+    expect(SSEClientTransport).toHaveBeenCalled();
   });
 
   it('falls back to local analysis when server connection times out', async () => {
