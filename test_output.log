@@ -1,0 +1,20 @@
+
+> agemo@0.1.0 ci
+> npm run lint && npm run typecheck && npm run test:coverage
+
+
+> agemo@0.1.0 lint
+> eslint .
+
+
+/Users/edycu/Projects/Hackathon/Frontier/frontier-torque-mcp/coverage/block-navigation.js
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+✖ 1 problem (0 errors, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
+
+> agemo@0.1.0 typecheck
+> tsc --noEmit
+
+src/app/layout.tsx(30,3): error TS1117: An object literal cannot have multiple properties with the same name.
